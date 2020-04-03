@@ -1,0 +1,16 @@
+version: "3"
+services:
+  caddy:
+    image: caddy
+    container_name: caddy
+    restart: always
+    command: ["-email", "nikita.buyevich@gmail.com", "-agree"]
+    ports:
+      - "80:80"
+      - "443:443"
+      - "2015:2015"
+    volumes:
+      - ./Caddyfile:/etc/Caddyfile
+      - .caddy:/root/.caddy
+      # TODO: Test remove later
+      - D:/development/web-server/caddy-server/srv:/srv

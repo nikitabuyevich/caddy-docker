@@ -15,13 +15,6 @@ ARG PLUGINS=""
 ARG TELEMETRY="false"
 # Whether or not to run UPX to compress static binary
 ARG COMPRESS="false"
-# Let's Encrypt email that you'll sign up with
-# Leave empty to be passed in during build
-ARG EMAIL=""
-
-# Require email to be passed in
-# Fail if it's empty
-RUN test -n "$EMAIL" || (echo "Error: EMAIL argument not set." && false)
 
 # Set the working directory and copy its contents
 # build root
@@ -64,4 +57,4 @@ COPY Caddyfile /etc/Caddyfile
 ENV CADDYPATH=/etc/.caddy
 
 # Run the app
-ENTRYPOINT ["/bin/caddy", "--conf", "/etc/Caddyfile", "--log", "stdout", "-email", "$EMAIL", "-agree"]
+ENTRYPOINT ["/bin/caddy", "--conf", "/etc/Caddyfile", "--log", "stdout"]
