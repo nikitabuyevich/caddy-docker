@@ -10,11 +10,11 @@ FROM golang:1.14.1-alpine@sha256:75233bee4a369270695c7e0718c35ee1ab153273684f2b4
 # Caddy server version
 ARG VERSION="1.0.4"
 # add plugin import paths here separated by commas
-ARG PLUGINS=""
+ARG PLUGINS="github.com/caddyserver/dnsproviders/cloudflare"
 # Send data to Caddy Server
 ARG TELEMETRY="false"
 # Whether or not to run UPX to compress static binary
-ARG COMPRESS="false"
+ARG COMPRESS="true"
 
 # Set the working directory and copy its contents
 # build root
